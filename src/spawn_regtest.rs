@@ -151,7 +151,7 @@ pub struct RegtestConf {
 }
 
 impl RegtestConf {
-    pub fn new(port: &str, rpc_port: &str) -> Result<Self, RegtestUtilsError> {
+    pub fn new(port: u64, rpc_port: u64) -> Result<Self, RegtestUtilsError> {
         check_ports_vec(vec![port.to_string()])?;
         check_ports_vec(vec![rpc_port.to_string()])?;
         Ok(RegtestConf {
