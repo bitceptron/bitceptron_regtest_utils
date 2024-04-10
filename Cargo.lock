@@ -25,7 +25,7 @@ checksum = "98f7eed2b2781a6f0b5c903471d48e15f56fb4e1165df8a9a2337fd1a59d45ea"
 
 [[package]]
 name = "bitceptron_regtest_utils"
-version = "0.4.0"
+version = "0.5.0"
 dependencies = [
  "bitcoin",
  "bitcoincore-rpc",
