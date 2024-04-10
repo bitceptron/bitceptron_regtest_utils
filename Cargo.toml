@@ -1,8 +1,9 @@
 [package]
 name = "bitceptron_regtest_utils"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 description = "A tiny utility crate for running bitcoin's regtest network."
+documentation = "https://docs.rs/bitceptron_regtest_utils/latest/bitceptron_regtest_utils/"
 repository = "https://github.com/bitceptron/bitceptron_regtest_utils"
 license = "MIT"
 keywords = ["bitcoin","regtest", "bitcoin-dev", "bitcoin-testing"]
@@ -12,4 +13,5 @@ keywords = ["bitcoin","regtest", "bitcoin-dev", "bitcoin-testing"]
 [dependencies]
 bitcoin = "0.31.1"
 bitcoincore-rpc = "0.18.0"
+miniscript = "11.0.0"
 regex = "1.10.3"

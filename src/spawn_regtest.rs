@@ -6,11 +6,12 @@ use std::{
     time::Duration,
 };
 
-use crate::{
+use bitcoincore_rpc::{Auth, Client, RpcApi};
+
+use super::{
     common::{check_confs_uniqueness, check_ports_vec},
     error::RegtestUtilsError,
 };
-use bitcoincore_rpc::{Auth, Client, RpcApi};
 
 pub fn spawn_regtest(
     bitcoind_path: &str,

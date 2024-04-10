@@ -25,10 +25,11 @@ checksum = "98f7eed2b2781a6f0b5c903471d48e15f56fb4e1165df8a9a2337fd1a59d45ea"
 
 [[package]]
 name = "bitceptron_regtest_utils"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "bitcoin",
  "bitcoincore-rpc",
+ "miniscript",
  "regex",
 ]
 
@@ -160,6 +161,17 @@ name = "memchr"
 version = "2.7.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "523dc4f511e55ab87b694dc30d0f820d60906ef06413f93d4d7a1385599cc149"
+
+[[package]]
+name = "miniscript"
+version = "11.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "86a23dd3ad145a980e231185d114399f25a0a307d2cd918010ddda6334323df9"
+dependencies = [
+ "bech32",
+ "bitcoin",
+ "bitcoin-internals",
+]
 
 [[package]]
 name = "ppv-lite86"
