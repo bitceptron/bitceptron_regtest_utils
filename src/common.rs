@@ -6,7 +6,7 @@ use crate::{
     error::RegtestUtilsError::{self, InvalidPort}, spawn_regtest::RegtestConf,
 };
 
-pub fn check_ports_vec(ports: Vec<String>) -> Result<(), RegtestUtilsError> {
+pub(crate) fn check_ports_vec(ports: Vec<String>) -> Result<(), RegtestUtilsError> {
     let re = Regex::new(r"[0-9]+").unwrap();
     if ports.is_empty() || ports.iter().any(|port| !re.is_match(port)) {
         Err(InvalidPort)
@@ -15,7 +15,7 @@ pub fn check_ports_vec(ports: Vec<String>) -> Result<(), RegtestUtilsError> {
     }
 }
 
-pub fn check_confs_uniqueness(confs: &Vec<RegtestConf>) -> bool {
+pub(crate) fn check_confs_uniqueness(confs: &Vec<RegtestConf>) -> bool {
     let confs_len = confs.len();
     let mut unique_ports = HashSet::new();
     confs.iter().for_each(|conf| {

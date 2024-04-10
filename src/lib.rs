@@ -1,4 +1,7 @@
-pub mod error;
-pub mod spawn_regtest;
-pub mod common;
-pub mod unwind_regtest;
+mod error;
+mod spawn_regtest;
+mod common;
+mod unwind_regtest;
+
+pub use spawn_regtest::{spawn_regtest, RegtestConf};
+pub use unwind_regtest::unwind_regtest;
