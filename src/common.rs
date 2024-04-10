@@ -6,16 +6,16 @@ use miniscript::Descriptor;
 use regex::Regex;
 
 use super::{error::RegtestUtilsError, spawn_regtest::RegtestConf};
-
+/// This function sanity checks the ports via regex to make sure the input is digits-only.
 pub fn check_ports_vec(ports: Vec<String>) -> Result<(), RegtestUtilsError> {
-    let re = Regex::new(r"[0-9]+").unwrap();
+    let re = Regex::new(r"[0-9]+$").unwrap();
     if ports.is_empty() || ports.iter().any(|port| !re.is_match(port)) {
         Err(RegtestUtilsError::InvalidPort)
     } else {
         Ok(())
     }
 }
-
+/// This functions checks the uniqueness of the RegtestConfs in a vector.
 pub fn check_confs_uniqueness(confs: &Vec<RegtestConf>) -> bool {
     let confs_len = confs.len();
     let mut unique_ports = HashSet::new();
@@ -35,6 +35,7 @@ pub fn check_confs_uniqueness(confs: &Vec<RegtestConf>) -> bool {
     true
 }
 
+/// This function is to send and mine a transaction.
 pub fn send_and_mine(
     tx: &Transaction,
     mining_client: &Client,
@@ -46,6 +47,7 @@ pub fn send_and_mine(
     Ok(txid)
 }
 
+/// This functions gets the balance of an x-only pubkey descriptor.
 pub fn get_balance(descriptor: &Descriptor<bitcoin::XOnlyPublicKey>, checking_client: &Client) -> Amount {
     let scan_request = ScanTxOutRequest::Single(descriptor.to_string());
     let scan_result = checking_client

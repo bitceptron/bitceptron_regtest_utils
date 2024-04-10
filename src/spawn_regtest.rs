@@ -12,7 +12,22 @@ use super::{
     common::{check_confs_uniqueness, check_ports_vec},
     error::RegtestUtilsError,
 };
-
+/// This function runs one or more regtest instances on your system.
+///
+/// Inputs are:
+///
+/// bitcoind_path: An absolute path to the bitcoind file on your local system. Include the file itself in the path.
+///
+/// bitcoin_conf_path: An absolute path to the bitcoin.conf file on your local system. Include the file itself in the path.
+///
+/// temp_path: An absolute path to a temp folder which is created by spawning regtest instances and removed by unwinding them.
+///
+/// regtest_confs: A vector of RegtestConfs. Each one will initiate a Regtest instance.
+/// 
+/// respite_period_milisecs: A grace period for bitcoind to initiate on the system.
+/// 
+/// connection_respite_factor: A multiplicative factor to the previous parameter which is to give time to regtest
+/// instances to connect to eachother.,
 pub fn spawn_regtest(
     bitcoind_path: &str,
     bitcoin_conf_path: &str,
@@ -145,6 +160,7 @@ fn kill_regtest_ports(ports: Vec<String>) -> Result<(), RegtestUtilsError> {
     Ok(())
 }
 
+/// A config struct for Regtest instances. Just a port for instances to connect through and an rpc-port for rpc calls.
 #[derive(Debug, Clone, Hash, PartialEq, Eq)]
 pub struct RegtestConf {
     port: String,

@@ -1,3 +1,4 @@
+/// Errors of the crate.
 #[derive(Debug)]
 pub enum RegtestUtilsError {
     InvalidPort,
